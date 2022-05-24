@@ -9,7 +9,7 @@ public class ParqueaderoFachada {
 	
 	public void crearCarro(String placa, String modelo, String marca, String cilindraje, int puertas, int estado) {
 		
-		Carro carro = new Carro(cilindraje, cilindraje, cilindraje, cilindraje, estado, estado);
+		CarroDto carro = new CarroDto(cilindraje, cilindraje, cilindraje, cilindraje, estado, estado);
 		
 	}
 	
