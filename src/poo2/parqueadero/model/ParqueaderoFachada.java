@@ -32,7 +32,11 @@ public class ParqueaderoFachada {
 	
 	public void crearCarro(String placa, String modelo, String marca, String cilindraje, int puertas, int estado) {
 		
+<<<<<<< HEAD
 		
+=======
+		CarroDto carro = new CarroDto(cilindraje, cilindraje, cilindraje, cilindraje, estado, estado);
+>>>>>>> 509aa0accd1eb8030f84287f1bf3f7e26bba4e3a
 		
 	}
 	

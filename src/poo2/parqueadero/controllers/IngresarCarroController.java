@@ -12,7 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
-public class IngresarCarroController implements Initializable {
+public class IngresarCarroController implements Initializable  {
 		@FXML
 		private TextField txtPlaca;
 		@FXML
@@ -29,6 +29,7 @@ public class IngresarCarroController implements Initializable {
 		private Button btnAceptar;
 		@FXML
 		private Button btnLimpiar;
+		
 		@Override
 		public void initialize(URL arg0, ResourceBundle arg1) {
 			// TODO Auto-generated method stub
