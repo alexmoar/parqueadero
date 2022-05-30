@@ -14,7 +14,9 @@ import poo2.parqueadero.model.dto.MotoDTO;
 public class H2CREAR {
 
 	public static void main(String[] argv) throws SQLException {
+		
 		H2CREAR h2Example = new H2CREAR();
+		
 		CarroDTO carro = new CarroDTO();
 		MotoDTO moto = new MotoDTO();
 		h2Example.createTableCarro();
@@ -37,18 +39,20 @@ public class H2CREAR {
 		System.out.println(sbCreateTableSQL);
 		// Step 1: Establishing a Connection
 		try (Connection connection = H2JDBCUtils.getConnection();
+	
 				// Step 2:Create a statement using connection object
 				Statement statement = connection.createStatement();) {
 
 			// Step 3: Execute the query or update query
 			statement.execute(sbCreateTableSQL.toString());
-
+			connection.close();
 		} catch (SQLException e) {
 			// print SQL exception information
 			System.err.println("Ya está creada la tabla carro");
 		} finally {
 //			insertRecord();
 		}
+	
 	}
 	
 	public void createTablemoto() throws SQLException {

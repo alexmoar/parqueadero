@@ -12,6 +12,7 @@ import poo2.parqueadero.model.dto.CarroDTO;
 import poo2.parqueadero.model.dto.VehiculoDTO;
 
 public class carroDAO {
+
 	private H2JDBCUtils util;
 	private H2CREAR h2;
 
@@ -19,32 +20,46 @@ public class carroDAO {
 		util.getConnection();
 	}
 
-	public carroDAO(H2JDBCUtils util,H2CREAR h2) {
+	public carroDAO(H2JDBCUtils util, H2CREAR h2) {
 		super();
 		this.util = util;
-		this.h2= h2;
+		this.h2 = h2;
 	}
-	
-	
-	public void agrerarCarro(CarroDTO carro) throws SQLException {
-		
-		h2.insertCarro(carro);
-		
+
+	public void agrerarCarro(CarroDTO carro) {
+
+		try {
+			h2.insertCarro(carro);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
-	
-	public ArrayList<VehiculoDTO>listaVehiculos() {
-		
+
+	public void updateCarro(CarroDTO carro) {
+
+		try {
+			h2.updateCarro(carro);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public ArrayList<VehiculoDTO> listaVehiculos() {
+
 		ArrayList<VehiculoDTO> lista = new ArrayList<VehiculoDTO>();
 		Statement statementOb = null;
 		Connection conn = null;
 		try {
 			ResultSet rs = statementOb.executeQuery("");
-			conn= H2JDBCUtils.getConnection();
+			conn = H2JDBCUtils.getConnection();
 			statementOb = conn.createStatement();
-			
-			
-			while(rs.next()) {
-				CarroDTO carro= new CarroDTO();
+
+			while (rs.next()) {
+				CarroDTO carro = new CarroDTO();
+				
 				carro.setPlaca(rs.getString("placa"));
 				carro.setMarca(rs.getString("marca"));
 			}
@@ -52,15 +67,7 @@ public class carroDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
-		
-		
 		return null;
-		
-	
-	
-	
-	
+
 	}
 }
