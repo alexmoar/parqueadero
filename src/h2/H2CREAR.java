@@ -6,22 +6,21 @@ import java.sql.Statement;
 
 import javax.swing.JOptionPane;
 
+import poo2.parqueadero.model.dto.CarroDTO;
+import poo2.parqueadero.model.dto.MotoDTO;
+
 
 
 public class H2CREAR {
 
 	public static void main(String[] argv) throws SQLException {
 		H2CREAR h2Example = new H2CREAR();
+		CarroDTO carro = new CarroDTO();
+		MotoDTO moto = new MotoDTO();
 		h2Example.createTableCarro();
 		h2Example.createTablemoto();
-		
-		String valId = JOptionPane.showInputDialog("Ingrese el ID: ");
-		String valName = JOptionPane.showInputDialog("Ingrese el Nombre: ");
-		String valEmail = JOptionPane.showInputDialog("Ingrese el Email: ");
-		String valCountry = JOptionPane.showInputDialog("Ingrese el Pais: ");
-		String valContra = JOptionPane.showInputDialog("Ingrese el Contrasena: ");
-		
-		h2Example.insertRecord(valId, valName, valEmail, valCountry, valContra);
+		h2Example.insertCarro(carro);
+		h2Example.insertMoto(moto);
 		
 		
 		
@@ -55,9 +54,9 @@ public class H2CREAR {
 	public void createTablemoto() throws SQLException {
 
 		StringBuffer sbCreateTableSQL = new StringBuffer();
-		sbCreateTableSQL.append("create table carro (placa varchar(20) primary key, ");
+		sbCreateTableSQL.append("create table moto (placa varchar(20) primary key, ");
 		sbCreateTableSQL.append("modelo varchar(20), marca varchar(20), ");
-		sbCreateTableSQL.append("cilindraje varchar(20), nPuertas varchar(20)");
+		sbCreateTableSQL.append("cilindraje varchar(20), tipo varchar(20)");
 		sbCreateTableSQL.append("estado int");
 
 		System.out.println(sbCreateTableSQL);
@@ -77,7 +76,77 @@ public class H2CREAR {
 		}
 	}
 
-	public void insertRecord(String id, String name, String email, String country, String contra) throws SQLException {
+	public boolean insertCarro( CarroDTO carro) throws SQLException {
+
+		boolean exito = false;
+		Connection conn = null;
+		Statement statementOb = null;
+
+		try {
+			conn = H2JDBCUtils.getConnection();
+			statementOb = conn.createStatement();
+
+			StringBuffer sb = new StringBuffer();
+			sb.append("INSERT INTO CARRO(placa, modelo, marca, cilindraje, nPuertas,estado) ");
+			sb.append("VALUES ("+carro.getPlaca()+", '"+carro.getModelo()+"', '"+carro.getMarca()+
+					"', '"+carro.getCilindraje()+"', '"+carro.getNpuertas()+"', '"+carro.getEstado()+")");
+
+			statementOb.executeUpdate(sb.toString());
+			exito = true;
+
+		} catch (SQLException e) {
+			// print SQL exception information
+			e.printStackTrace();
+		} finally {
+			// Close the connection
+			try {
+				statementOb.close();
+				conn.close();
+			} catch (SQLException e) {
+				// print SQL exception information
+				e.printStackTrace();
+			}
+
+		}
+		return exito;
+	}
+	
+	public boolean insertMoto(MotoDTO moto) throws SQLException {
+
+		boolean exito = false;
+		Connection conn = null;
+		Statement statementOb = null;
+
+		try {
+			conn = H2JDBCUtils.getConnection();
+			statementOb = conn.createStatement();
+
+			StringBuffer sb = new StringBuffer();
+			sb.append("INSERT INTO MOTO(placa, modelo, marca, cilindraje, tipo,estado) ");
+			sb.append("VALUES ("+moto.getPlaca()+", '"+moto.getModelo()+"', '"+moto.getMarca()+
+					"', '"+moto.getCilindraje()+"', '"+moto.getTipo()+"', '"+moto.getEstado()+")");
+
+			statementOb.executeUpdate(sb.toString());
+			exito = true;
+
+		} catch (SQLException e) {
+			// print SQL exception information
+			e.printStackTrace();
+		} finally {
+			// Close the connection
+			try {
+				statementOb.close();
+				conn.close();
+			} catch (SQLException e) {
+				// print SQL exception information
+				e.printStackTrace();
+			}
+
+		}
+		return exito;
+	}
+	
+	public void updateCarro(CarroDTO carro) throws SQLException {
 
 		Connection conn = null;
 		Statement statementOb = null;
@@ -87,8 +156,9 @@ public class H2CREAR {
 			statementOb = conn.createStatement();
 
 			StringBuffer sb = new StringBuffer();
-			sb.append("INSERT INTO USERS(id, name, email, country, password) ");
-			sb.append("VALUES ("+id+", '"+name+"', '"+email+"', '"+country+"', '"+contra+"')");
+			sb.append("UPDATE CARRO SET placa = '"+carro.getPlaca()+"', modelo = '"+carro.getModelo()
+			+"', marca='"+carro.getMarca()+"', cilindraje='"+carro.getCilindraje()+"', nPuertas='"+carro.getNpuertas()+"', estado= '"+carro.getEstado()+")");
+			sb.append("WHERE placa="+carro.getPlaca()+"");
 
 			statementOb.executeUpdate(sb.toString());
 
@@ -109,7 +179,7 @@ public class H2CREAR {
 
 	}
 	
-	public void updateRecord(String id, String name, String email, String country, String contra) throws SQLException {
+	public void updateMoto(MotoDTO moto) throws SQLException {
 
 		Connection conn = null;
 		Statement statementOb = null;
@@ -119,8 +189,9 @@ public class H2CREAR {
 			statementOb = conn.createStatement();
 
 			StringBuffer sb = new StringBuffer();
-			sb.append("UPDATE USERS SET name = '"+name+"', email = '"+email+"', country='"+country+"', password='"+contra+"' ");
-			sb.append("WHERE id="+id+"");
+			sb.append("UPDATE MOTO SET placa = '"+moto.getPlaca()+"', modelo = '"+moto.getModelo()
+			+"', marca='"+moto.getMarca()+"', cilindraje='"+moto.getCilindraje()+"', estado= '"+moto.getEstado()+")");
+			sb.append("WHERE placa="+moto.getPlaca()+"");
 
 			statementOb.executeUpdate(sb.toString());
 
@@ -142,3 +213,6 @@ public class H2CREAR {
 	}
 	
 }
+	
+
+
