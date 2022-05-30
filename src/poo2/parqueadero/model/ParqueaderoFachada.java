@@ -3,7 +3,7 @@ package poo2.parqueadero.model;
 import java.util.ArrayList;
 
 import h2.H2CREAR;
-
+import poo2.parqueadero.model.dto.CarroDTO;
 import poo2.parqueadero.model.factory.VehiculoFactory;
 
 
@@ -32,11 +32,9 @@ public class ParqueaderoFachada {
 	
 	public void crearCarro(String placa, String modelo, String marca, String cilindraje, int puertas, int estado) {
 		
-<<<<<<< HEAD
-		
-=======
-		CarroDto carro = new CarroDto(cilindraje, cilindraje, cilindraje, cilindraje, estado, estado);
->>>>>>> 509aa0accd1eb8030f84287f1bf3f7e26bba4e3a
+
+		CarroDTO carro = new CarroDTO ();
+
 		
 	}
 	
