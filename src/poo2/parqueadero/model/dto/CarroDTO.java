@@ -7,12 +7,12 @@ public class CarroDTO extends VehiculoDTO {
 	private int npuertas;
 
 	
-
+ 
 	public CarroDTO() {}
 
 	
 
-	public CarroDTO(String placa, String modelo, String marca, String cilindraje, int estado, int npuertas) {
+	public CarroDTO(String placa, String modelo, String marca, String cilindraje,int npuertas,int estado) {
 		super(placa, modelo, marca, cilindraje, estado);
 		this.npuertas = npuertas;
 	}

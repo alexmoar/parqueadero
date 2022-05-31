@@ -12,7 +12,7 @@ public class VehiculoDTO {
 	
  public VehiculoDTO() {}
 	
-	
+	 
 public VehiculoDTO(String placa, String modelo, String marca, String cilindraje, int estado) {
 		super();
 		this.placa = placa;

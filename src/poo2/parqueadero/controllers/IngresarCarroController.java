@@ -93,13 +93,13 @@ public class IngresarCarroController implements Initializable {
 			int puertas = cbPuertas.getValue();	
 			String estado = cbEstado.getValue();	
 			int estadoInt=0;
-			
+			 
 			System.out.println(placa);
 			System.out.println(modelo);
 			System.out.println(marca);
 			System.out.println(cilindraje);
 			System.out.println(puertas);
-			System.out.println(estado);
+			System.out.println("estado"+estado);
 			System.out.println(estadoInt);
 			
 			if (estado=="Activo") {
@@ -108,10 +108,20 @@ public class IngresarCarroController implements Initializable {
 			}else if (estado=="Inactivo") {
 				estadoInt=0;
 			}
-			System.out.println(estadoInt);
+			System.out.println("estado "+estadoInt);
 			
 				f.agregarCarro(placa, modelo, marca, cilindraje, puertas, estadoInt);
 				
 		
 		}
+	@FXML
+	public void limpiar (ActionEvent ev) {
+		
+		txtPlaca.clear();
+		txtModelo.clear();
+		cbxMarca.getSelectionModel().clearSelection();
+		cbCilindraje.getSelectionModel().clearSelection();
+		cbPuertas.getSelectionModel().clearSelection();
+		cbEstado.getSelectionModel().clearSelection();
+	}
 }

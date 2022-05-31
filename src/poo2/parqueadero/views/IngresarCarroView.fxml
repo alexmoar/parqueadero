@@ -65,7 +65,7 @@
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="btnLimpiar" layoutX="174.0" layoutY="381.0" mnemonicParsing="false" style="-fx-background-color: #3285a8;" text="Limpiar">
+            <Button fx:id="btnLimpiar" layoutX="174.0" layoutY="381.0" mnemonicParsing="false" onAction="#limpiar" style="-fx-background-color: #3285a8;" text="Limpiar">
                <font>
                   <Font size="13.0" />
                </font>

@@ -23,8 +23,10 @@ public class CarroDAO {
 	private ParqueaderoFachada p;
 	
 	public CarroDAO() {
+		
 		util.getConnection();
-		h2 =new H2CREAR();
+		h2 = new H2CREAR();
+		
 	}
 
 	 public void conectarCarro() {
@@ -86,96 +88,35 @@ public class CarroDAO {
 					}
 	            
 	        }
-	    }
+	    } 
 	   
 	  public boolean agregarCarro(String placa, String modelo, String marca, String cilindraje, int nPuertas, int estado) throws SQLException {
 		  System.out.println("01");
+		  p = ParqueaderoFachada.getInstance();
 		  CarroDTO carro = new CarroDTO( placa,  modelo,  marca,  cilindraje,  nPuertas,  estado);
 		  System.out.println("001");
 		  
 		  h2.insertCarro(carro);
 		  System.out.println("ok");
+		  
+		  CarroDTO m = (CarroDTO) p.crearVehiculo("carro");
+          VehiculoDTO v = new VehiculoDTO();
+          System.out.println("2");
+          m.setPlaca(placa);
+          m.setModelo(modelo);
+          m.setMarca(marca);
+          m.setCilindraje(cilindraje);
+          m.setNpuertas(nPuertas);
+          m.setEstado(estado);
+          
+          v.imprimir();
+          
 		return true;
 		  
 	  }
 	
-	/*  
-	  public boolean agregarCarro(String placa, String modelo, String marca, String cilindraje, int nPuertas, int estado) {
-		  System.out.println("0");
-	     
-	            p = ParqueaderoFachada.getInstance();
-	            boolean exito = false;
-	            Connection conn = null;
-	    		Statement statementOb = null;
-	            System.out.println("01");
-	            try {      
-	            conn = H2JDBCUtils.getConnection();
-	            System.out.println("001");
+	
 
-	            Statement st = conexion.createStatement();
-	            
-	            System.out.println("0001");
-	            
-	            conexion = H2JDBCUtils.getConnection();
-				statementOb = conn.createStatement();
-				 System.out.println("00001");
-				StringBuffer sb = new StringBuffer();
-				sb.append("INSERT INTO CARRO(placa, modelo, marca, cilindraje, nPuertas,estado) ");
-				sb.append("VALUES ("+placa+", '"+modelo+"', '"+marca+
-						"', '"+cilindraje+"', '"+nPuertas+"', '"+estado+")");
-
-				statementOb.executeUpdate(sb.toString());
-	            
-	            
-	            
-	            
-	            
-	            System.out.println("0001");
-	          /*  st.executeUpdate("INSERT INTO CARRO (PLACA)values('" + placa + "')");
-	            st.executeUpdate("UPDATE CARRO SET MARCANO=" + marca + " WHERE CPLACA='" + placa + "'");
-	            st.executeUpdate("UPDATE CARRO SET CMODELO=" + mModelo + " WHERE CPLACA='" + placa + "'");
-	            st.executeUpdate("UPDATE CARRO SET CCILINDRAJE=" + mCilindraje + " WHERE CPLACA='" + placa + "'");
-	            st.executeUpdate("UPDATE CARRO SET CNOPUERTAS=" + nPuertas + " WHERE CPLACA='" + placa + "'");
-	            st.executeUpdate("UPDATE CARRO SET ESTADO=" + estado + " WHERE CPLACA='" + placa + "'");
-		          System.out.println("1");
-*/ /*
-	            CarroDTO m = (CarroDTO) p.crearVehiculo("carro");
-	            VehiculoDTO v = new VehiculoDTO();
-	            System.out.println("2");
-	            m.setPlaca(placa);
-	            m.setMarca(marca);
-	            m.setModelo(modelo);
-	            m.setCilindraje(cilindraje);
-	            m.setNpuertas(nPuertas);
-	            m.setEstado(estado);
-	          //  m.setFechaI(mFecha);
-	          //  m.setHoraI(mHoraI);
-	//
-	            System.out.println("3");
-	            v.vehiculos.add(m);
-	            // p.notificar("CARRO");
-	             
-	            v.imprimir();
-	            st.executeUpdate("UPDATE HISTORIAL SET ESTADO ='" + estado + "' WHERE PLACA='" + placa + "'");
-	          //st.executeUpdate("UPDATE HISTORIAL SET MHORAI ='" + mHoraI + "' WHERE MPLACA='" + placa + "'");
-	           /*
-	            } catch (SQLException e) {
-	    			// print SQL exception information
-	    			e.printStackTrace();
-	    		} finally {
-	    			// Close the connection
-	    			try {
-	    				statementOb.close();
-	    				conn.close();
-	    			} catch (SQLException e) {
-	    				// print SQL exception information
-	    				e.printStackTrace();
-	    			}
-
-	    		}
-	    		return exito;
-	    }
-*/
 	    public String consultarCarro() {
 
 	        try {
@@ -185,7 +126,7 @@ public class CarroDAO {
 	            String todo = "";
 
 	            Statement statementOb = conexion.createStatement();
-	            ResultSet rs = statementOb.executeQuery("SELECT C.PLACA, MA.MNAME, C.MODELO, C.CILINDRAJE,C.NPUERTAS FROM CARRO C");
+	            ResultSet rs = statementOb.executeQuery("SELECT C.PLACA, MA.MODELO, C.MARCA, C.CILINDRAJE,C.PUERTAS FROM CARRO C");
 
 	            while (rs.next()) {
 	                placa = rs.getString("PLACA");
@@ -193,7 +134,7 @@ public class CarroDAO {
 	                modelo = rs.getString("MODELO");
 	                marca = rs.getString("MARCA");
 	                cilindraje = rs.getString("CILINDRAJE");
-	                nPueras = rs.getInt("NPUERTAS");
+	                nPueras = rs.getInt("PUERTAS");
 	               
 	                todo += "********************************************************************************************************CARRO*************************************************************************************************\n \n PLACA:   ";
 	                todo += placa += "      MARCA:   ";
@@ -232,17 +173,7 @@ public class CarroDAO {
 		}
 
 	}
-/*
-	public void updateCarro(CarroDTO carro) {
 
-		try {
-			h2.updateCarro(carro);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-*/
 	public ArrayList<VehiculoDTO> listaVehiculos() {
 
 		ArrayList<VehiculoDTO> lista = new ArrayList<VehiculoDTO>();

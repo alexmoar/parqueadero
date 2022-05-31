@@ -1,12 +1,8 @@
 package h2;
 
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-
-import javax.swing.JOptionPane;
-
 import poo2.parqueadero.model.dto.CarroDTO;
 import poo2.parqueadero.model.dto.MotoDTO;
 
@@ -22,8 +18,7 @@ public class H2CREAR {
 		MotoDTO moto = new MotoDTO();
 		h2Example.createTableCarro();
 		h2Example.createTablemoto();
-	//	h2Example.insertCarro(carro);
-//		h2Example.insertMoto(moto);
+
 		 
 		
 		
@@ -88,17 +83,19 @@ public class H2CREAR {
 		Connection conn = null;
 		Statement statementOb = null;
 		
-
+ 
 		try {
 			conn = H2JDBCUtils.getConnection();
 			statementOb = conn.createStatement();
 			System.out.println("2");
 			StringBuffer sb = new StringBuffer();
-			sb.append("INSERT INTO CARRO (placa, modelo, marca, cilindraje, nPuertas, estado) ");
+			sb.append("INSERT INTO CARRO (placa, modelo, marca, cilindraje, puertas, estado) ");
 			sb.append("VALUES ('"+carro.getPlaca()+"', '"+carro.getModelo()+"', '"+carro.getMarca()+"', '"+carro.getCilindraje()+"', '"+carro.getNpuertas()+"', '"+carro.getEstado()+"')");
 
 			statementOb.executeUpdate(sb.toString());
 			exito = true; 
+			
+			  
 
 		} catch (SQLException e) {
 			// print SQL exception information
@@ -117,23 +114,25 @@ public class H2CREAR {
 		return exito;
 	}
 	
-	public boolean insertMoto(MotoDTO moto) throws SQLException {
-
+	public boolean insertMoto( MotoDTO moto) throws SQLException {
+		System.out.println("1");
 		boolean exito = false;
 		Connection conn = null;
 		Statement statementOb = null;
-
+		
+ 
 		try {
 			conn = H2JDBCUtils.getConnection();
 			statementOb = conn.createStatement();
-
+			System.out.println("2");
 			StringBuffer sb = new StringBuffer();
-			sb.append("INSERT INTO MOTO(placa, modelo, marca, cilindraje, tipo,estado) ");
-			sb.append("VALUES ("+moto.getPlaca()+", '"+moto.getModelo()+"', '"+moto.getMarca()+
-					"', '"+moto.getCilindraje()+"', '"+moto.getTipo()+"', '"+moto.getEstado()+")");
+			sb.append("INSERT INTO MOTO (placa, modelo, marca, cilindraje, tipo, estado) ");
+			sb.append("VALUES ('"+moto.getPlaca()+"', '"+moto.getModelo()+"', '"+moto.getMarca()+"', '"+moto.getCilindraje()+"', '"+moto.getTipo()+"', '"+moto.getEstado()+"')");
 
 			statementOb.executeUpdate(sb.toString());
-			exito = true;
+			exito = true; 
+			
+			  
 
 		} catch (SQLException e) {
 			// print SQL exception information

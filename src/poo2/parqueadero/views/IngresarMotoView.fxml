@@ -36,7 +36,7 @@
                </font>
             </Label>
             <TextField fx:id="txtPlaca" layoutX="140.0" layoutY="75.0" prefHeight="12.0" prefWidth="150.0" promptText="Ej: AZF-234" />
-            <Label layoutX="39.0" layoutY="177.0" text="MARCA">
+            <Label layoutX="37.0" layoutY="160.0" text="MARCA">
                <font>
                   <Font name="SansSerif Bold" size="14.0" />
                </font>
@@ -47,27 +47,27 @@
                </font>
             </Label>
             <TextField fx:id="txtModelo" layoutX="139.0" layoutY="124.0" prefHeight="12.0" prefWidth="150.0" promptText="Ej: 2022" />
-            <ComboBox fx:id="cbCilindraje" layoutX="139.0" layoutY="219.0" prefHeight="12.0" prefWidth="150.0" promptText="Ej: 200" />
-            <Label layoutX="39.0" layoutY="224.0" text="CILINDRAJE">
+            <ComboBox fx:id="cbCilindraje" layoutX="138.0" layoutY="199.0" onAction="#comboboxEvent" prefHeight="12.0" prefWidth="150.0" promptText="Ej: 200" />
+            <Label layoutX="38.0" layoutY="204.0" text="CILINDRAJE">
                <font>
                   <Font name="SansSerif Bold" size="14.0" />
                </font>
             </Label>
-            <ComboBox fx:id="cbxMarca" editable="true" layoutX="140.0" layoutY="172.0" prefHeight="12.0" prefWidth="150.0" promptText="Ej: susuki" />
-            <Button fx:id="btnAceptar" layoutX="65.0" layoutY="325.0" mnemonicParsing="false" onAction="#guardarCarro" style="-fx-background-color: #32a86d;" text="Aceptar">
+            <ComboBox fx:id="cbxMarca" editable="true" layoutX="138.0" layoutY="155.0" onAction="#comboboxEvent" prefHeight="12.0" prefWidth="150.0" promptText="Ej: susuki" />
+            <Button fx:id="btnAceptar" layoutX="65.0" layoutY="325.0" mnemonicParsing="false" onAction="#guardarMoto" style="-fx-background-color: #32a86d;" text="Aceptar">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="btnLimpiar" layoutX="184.0" layoutY="325.0" mnemonicParsing="false" style="-fx-background-color: #3285a8;" text="Limpiar">
+            <Button fx:id="btnLimpiar" layoutX="184.0" layoutY="325.0" mnemonicParsing="false" onAction="#limpiar" style="-fx-background-color: #3285a8;" text="Limpiar">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Separator layoutX="39.0" layoutY="302.0" prefHeight="6.0" prefWidth="247.0" />
+            <Separator layoutX="39.0" layoutY="312.0" prefHeight="6.0" prefWidth="247.0" />
             <Separator layoutX="297.0" layoutY="23.0" orientation="VERTICAL" prefHeight="330.0" prefWidth="3.0" />
-            <ComboBox fx:id="cbCilindraje1" layoutX="137.0" layoutY="251.0" prefHeight="12.0" prefWidth="150.0" promptText="Ej: Urbana" />
-            <Label layoutX="39.0" layoutY="256.0" text="TIPO">
+            <ComboBox fx:id="cbTipo" layoutX="137.0" layoutY="236.0" onAction="#comboboxEvent" prefHeight="12.0" prefWidth="150.0" promptText="Ej: Urbana" />
+            <Label layoutX="39.0" layoutY="241.0" text="TIPO">
                <font>
                   <Font name="SansSerif Bold" size="14.0" />
                </font>
@@ -78,6 +78,12 @@
                 <TableColumn prefWidth="75.0" text="C2" />
               </columns>
             </TableView>
+            <ComboBox fx:id="cbEstado" layoutX="137.0" layoutY="277.0" onAction="#comboboxEvent" prefHeight="12.0" prefWidth="150.0" promptText="EJ: Activo" />
+            <Label layoutX="39.0" layoutY="282.0" text="Estado">
+               <font>
+                  <Font name="SansSerif Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>

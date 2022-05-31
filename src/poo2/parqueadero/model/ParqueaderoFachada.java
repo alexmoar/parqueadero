@@ -25,8 +25,8 @@ public class ParqueaderoFachada {
 	
 	private ParqueaderoFachada() {
 		this.carro = new CarroDAO();
-
-		try {
+		this.moto= new MotoDAO();
+		try { 
 			h2.createTableCarro();
 			h2.createTablemoto();
 		} catch (SQLException e) {
@@ -67,7 +67,9 @@ public class ParqueaderoFachada {
 
 	}
 
-	public void crearMoto(String placa, String modelo, String marca, String cilindraje, String puertas, int estado) {
-
+	public boolean agrgarMoto(String placa, String modelo, String marca, String cilindraje, String tipo, int estado) throws SQLException {
+		return moto.agregarMoto(placa, modelo, marca, cilindraje, tipo, estado);
 	}
+	
+	
 }
