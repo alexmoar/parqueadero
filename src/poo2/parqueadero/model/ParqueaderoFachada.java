@@ -57,7 +57,9 @@ public class ParqueaderoFachada {
 		carro.cerrarCarro();
 	}
 	
-	
+	public String consultarCarro() {
+        return carro.consultarCarro();
+    }
 	
 	public boolean agregarCarro(String placa, String modelo, String marca, String cilindraje, int puertas, int estado) throws SQLException {
 

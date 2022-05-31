@@ -8,13 +8,17 @@ import java.util.ResourceBundle;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
+import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import poo2.parqueadero.model.ParqueaderoFachada;
 
-public class IngresarCarroController implements Initializable {
+
+public class IngresarCarroController implements Initializable ,IController {
 	@FXML
 	private TextField txtPlaca;
 	@FXML
@@ -28,14 +32,15 @@ public class IngresarCarroController implements Initializable {
 	@FXML
 	private ComboBox<String> cbEstado;
 	
-
 	private ParqueaderoFachada f;
 
+	private ControllersPool pool;
 	@Override
 
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		// TODO Auto-generated method 
 
+	
 
 		ArrayList<String> lista = new ArrayList<>();
 		Collections.addAll(lista, new String[] { "1000", "1200", "1500", "2000" });
@@ -53,9 +58,13 @@ public class IngresarCarroController implements Initializable {
 		Collections.addAll(estado, new String[] { "Activo", "Inactivo" });
 		cbEstado.getItems().addAll(estado);
 
+		
 	}
 
 	public IngresarCarroController() {
+		
+		pool = ControllersPool.getInstance();
+		pool.guardarInstanciaControlador("CC", this);
 		f = f.getInstance();
 	}
  
@@ -109,7 +118,9 @@ public class IngresarCarroController implements Initializable {
 				estadoInt=0;
 			}
 			System.out.println("estado "+estadoInt);
-			
+
+			ReporteCarroController contro = (ReporteCarroController) pool.obtenerInstanciaControlador("RC");
+			contro.aumentarContadorCarros();
 				f.agregarCarro(placa, modelo, marca, cilindraje, puertas, estadoInt);
 				
 		
@@ -123,5 +134,22 @@ public class IngresarCarroController implements Initializable {
 		cbCilindraje.getSelectionModel().clearSelection();
 		cbPuertas.getSelectionModel().clearSelection();
 		cbEstado.getSelectionModel().clearSelection();
+	}
+	
+	@FXML public void abrirReporte(ActionEvent e) {
+		try {
+			AnchorPane root = (AnchorPane) FXMLLoader
+					.load(getClass().getResource("/poo2/parqueadero/views/ReporteCarros.fxml"));
+
+			Stage stage = new Stage();
+			
+			Scene scene = new Scene(root);
+			
+			stage.setScene(scene);
+			stage.show();
+
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 	}
 }
