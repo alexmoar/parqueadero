@@ -8,7 +8,7 @@ public class ReporteCarroController implements IController{
 
 	@FXML private TextField txtContadorCarros;
 	
-	private ControllersPool pool;
+	public ControllersPool pool;
 	
 	public ReporteCarroController() {
 		pool = ControllersPool.getInstance();

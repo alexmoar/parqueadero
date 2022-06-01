@@ -4,13 +4,13 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 
-<MenuBar fx:id="myMenuBar" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" 
-fx:controller="poo2.parqueadero.controllers.MenuBarController">
+<MenuBar fx:id="myMenuBar" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="poo2.parqueadero.controllers.MenuBarController">
 	<menus>
 		<Menu mnemonicParsing="false" text="Registro">
 			<items>
 				<MenuItem mnemonicParsing="false" onAction="#handleIngresarCarroMenu" text="Carro" />
 				<MenuItem mnemonicParsing="false" onAction="#handleIngresarMotoMenu" text="Moto" />
+            <MenuItem mnemonicParsing="false" onAction="#handleIngresarBicicletaMenu" text="Bicicleta" />
 			</items>
 		</Menu>
 		<Menu mnemonicParsing="false" text="Opciones">

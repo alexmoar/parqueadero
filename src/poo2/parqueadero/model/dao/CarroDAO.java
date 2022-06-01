@@ -45,14 +45,9 @@ public class CarroDAO {
 					    String marca = rs.getString("MARCA");
 					    String modelo = rs.getString("MODELO");
 					    String cilindraje = rs.getString("CILINDRAJE");
-					    int nPuertas = rs.getInt("NPUERTAS");
+					    int nPuertas = rs.getInt("PUERTAS");
 					    int estado= rs.getInt("ESTADO");
-        //     String Fingreso = rs.getString("CFECHA");
-        //      String Hingreso = rs.getString("CHORAI");
-        //       String Fsalida = rs.getString("CFECHA_S");
-        //      String Hsalida = rs.getString("CHORA_S");
-        //       double saldo = rs.getDouble("CSALDO");
-					    
+ 
 
 					    CarroDTO m = (CarroDTO) p.crearVehiculo("carro");
 					    VehiculoDTO v = new VehiculoDTO();
@@ -62,12 +57,10 @@ public class CarroDAO {
 					    m.setModelo(modelo);
 					    m.setCilindraje(cilindraje);
 					    m.setNpuertas(nPuertas);
-					 //    m.setFechaI(Fingreso);
-					 //   m.setHoraI(Hingreso);
-					 //   m.setFechaS(Fsalida);
-					 //    m.setHoraS(Hsalida);
-					 //   m.setSaldo(saldo);
-					    v.vehiculos.add(m);
+					    
+					    ArrayList<VehiculoDTO>vehiculo = new ArrayList<>();
+					    vehiculo.add(m);
+					    v.setVehiculos(vehiculo);
 					   
 					}
 				} catch (SQLException e) {
@@ -91,13 +84,13 @@ public class CarroDAO {
 	    } 
 	   
 	  public boolean agregarCarro(String placa, String modelo, String marca, String cilindraje, int nPuertas, int estado) throws SQLException {
-		  System.out.println("01");
+		//  System.out.println("01");
 		  p = ParqueaderoFachada.getInstance();
 		  CarroDTO carro = new CarroDTO( placa,  modelo,  marca,  cilindraje,  nPuertas,  estado);
-		  System.out.println("001");
+		 // System.out.println("001");
 		  
 		  h2.insertCarro(carro);
-		  System.out.println("ok");
+		 // System.out.println("ok");
 		  
 		  CarroDTO m = (CarroDTO) p.crearVehiculo("carro");
           VehiculoDTO v = new VehiculoDTO();

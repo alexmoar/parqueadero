@@ -7,6 +7,7 @@ import java.util.HashMap;
 public class ControllersPool {
 
 	private static ControllersPool instance;
+	
 	private HashMap<String, IController> listControllers;
 	
 	private ControllersPool() {

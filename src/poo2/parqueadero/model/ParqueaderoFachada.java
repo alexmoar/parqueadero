@@ -3,6 +3,7 @@ package poo2.parqueadero.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import Obsevador.Notificador;
 import h2.H2CREAR;
 import poo2.parqueadero.model.dao.CarroDAO;
 import poo2.parqueadero.model.dao.MotoDAO;
@@ -15,7 +16,7 @@ import poo2.parqueadero.model.factory.VehiculoFactory;
 import poo2.parqueadero.model.factory.UtilidadesFactory;
 
 
-public class ParqueaderoFachada {
+public class ParqueaderoFachada  implements Notificador  {
 	private static ParqueaderoFachada instance;
 
 	H2CREAR h2 = new H2CREAR();
@@ -71,6 +72,34 @@ public class ParqueaderoFachada {
 
 	public boolean agrgarMoto(String placa, String modelo, String marca, String cilindraje, String tipo, int estado) throws SQLException {
 		return moto.agregarMoto(placa, modelo, marca, cilindraje, tipo, estado);
+	}
+
+
+	@Override
+	public void listeners() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void subscribe() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void eliminarsuscritor() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public void notificacion() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

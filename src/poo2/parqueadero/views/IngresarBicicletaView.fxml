@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label layoutX="30.0" layoutY="24.0" text="Registrar Ingreso Bicicleta">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="80.0" text="PLACA ">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtPlaca" layoutX="146.0" layoutY="75.0" prefHeight="12.0" prefWidth="150.0" promptText="Ej: AZF-234" />
+      <Label layoutX="45.0" layoutY="177.0" text="MARCA">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="45.0" layoutY="129.0" text="MODELO">
+         <font>
+            <Font name="SansSerif Bold" size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="txtModelo" layoutX="145.0" layoutY="124.0" prefHeight="12.0" prefWidth="150.0" promptText="Ej: 2022" />
+      <Button fx:id="btnAceptar" layoutX="67.0" layoutY="338.0" mnemonicParsing="false" onAction="#guardarCarro" style="-fx-background-color: #32a86d;" text="Aceptar">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnLimpiar" layoutX="191.0" layoutY="338.0" mnemonicParsing="false" onAction="#limpiar" style="-fx-background-color: #3285a8;" text="Limpiar">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Button>
+      <TableView fx:id="tabla" layoutX="350.0" layoutY="75.0" prefHeight="302.0" prefWidth="224.0">
+         <columns>
+            <TableColumn fx:id="idplca" prefWidth="75.0" text="Placa" />
+            <TableColumn fx:id="idModelo" prefWidth="75.0" text="Modelo" />
+            <TableColumn fx:id="idMarca" prefWidth="75.0" text="Marca" />
+         </columns>
+      </TableView>
+      <Button fx:id="btnReporte" layoutX="320.0" layoutY="39.0" mnemonicParsing="false" onAction="#abrirReporte" text="Reporte" />
+   </children>
+</AnchorPane>

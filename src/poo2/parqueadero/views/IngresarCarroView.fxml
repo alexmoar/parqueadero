@@ -72,10 +72,11 @@
             </Button>
             <Separator layoutX="29.0" layoutY="358.0" prefHeight="6.0" prefWidth="247.0" />
             <Separator layoutX="294.0" layoutY="6.0" orientation="VERTICAL" prefHeight="448.0" prefWidth="9.0" />
-            <TableView layoutX="310.0" layoutY="86.0" prefHeight="342.0" prefWidth="269.0">
+            <TableView fx:id="tabla" layoutX="331.0" layoutY="78.0" prefHeight="342.0" prefWidth="224.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="C1" />
-                <TableColumn prefWidth="75.0" text="C2" />
+                <TableColumn fx:id="idplca" prefWidth="75.0" text="Placa" />
+                  <TableColumn fx:id="idModelo" prefWidth="75.0" text="Modelo" />
+                  <TableColumn fx:id="idMarca" prefWidth="75.0" text="Marca" />
               </columns>
             </TableView>
             <ComboBox fx:id="cbEstado" layoutX="128.0" layoutY="305.0" onAction="#comboboxEvent" prefHeight="12.0" prefWidth="150.0" promptText="Ej: ACTIVO" />

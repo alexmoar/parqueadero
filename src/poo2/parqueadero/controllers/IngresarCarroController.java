@@ -12,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -31,6 +32,8 @@ public class IngresarCarroController implements Initializable ,IController {
 	private ComboBox<String> cbxMarca;
 	@FXML
 	private ComboBox<String> cbEstado;
+	@FXML
+	private TableView tabla;
 	
 	private ParqueaderoFachada f;
 
@@ -57,7 +60,18 @@ public class IngresarCarroController implements Initializable ,IController {
 		ArrayList<String> estado = new ArrayList<>();
 		Collections.addAll(estado, new String[] { "Activo", "Inactivo" });
 		cbEstado.getItems().addAll(estado);
+		
+		llenarTabla();
 
+		
+	}
+	
+	public void llenarTabla() {
+		
+		tabla = new TableView();
+		
+		
+		f.conectarCarro();
 		
 	}
 
@@ -75,19 +89,19 @@ public class IngresarCarroController implements Initializable ,IController {
 		if (evt.equals(cbxMarca)) {
 
 			String marca = cbxMarca.getValue();
-			System.out.println(marca);
+			//System.out.println(marca);
 		} else if (evt.equals(cbCilindraje)) {
 
 			String cilindreaje = cbCilindraje.getValue();
-			System.out.println(cilindreaje);
+			//System.out.println(cilindreaje);
 		} else if (evt.equals(cbPuertas)) {
 
 			Integer puertas = cbPuertas.getValue();
-			System.out.println(puertas);
+			//System.out.println(puertas);
 		} else if (evt.equals(cbEstado)) {
 
-			String estado = cbEstado.getValue();
-			System.out.println(estado);
+			//String estado = cbEstado.getValue();
+			//System.out.println(estado);
 		}
 	}
 
@@ -117,12 +131,14 @@ public class IngresarCarroController implements Initializable ,IController {
 			}else if (estado=="Inactivo") {
 				estadoInt=0;
 			}
-			System.out.println("estado "+estadoInt);
+		//System.out.println("estado "+estadoInt);
 
-			ReporteCarroController contro = (ReporteCarroController) pool.obtenerInstanciaControlador("RC");
-			contro.aumentarContadorCarros();
+			
 				f.agregarCarro(placa, modelo, marca, cilindraje, puertas, estadoInt);
 				
+				
+				ReporteCarroController control =( ReporteCarroController)  pool.obtenerInstanciaControlador("RC");
+				control.aumentarContadorCarros();	
 		
 		}
 	@FXML

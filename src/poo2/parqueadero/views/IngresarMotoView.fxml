@@ -54,12 +54,12 @@
                </font>
             </Label>
             <ComboBox fx:id="cbxMarca" editable="true" layoutX="138.0" layoutY="155.0" onAction="#comboboxEvent" prefHeight="12.0" prefWidth="150.0" promptText="Ej: susuki" />
-            <Button fx:id="btnAceptar" layoutX="65.0" layoutY="325.0" mnemonicParsing="false" onAction="#guardarMoto" style="-fx-background-color: #32a86d;" text="Aceptar">
+            <Button layoutX="65.0" layoutY="325.0" mnemonicParsing="false" onAction="#guardarMoto" style="-fx-background-color: #32a86d;" text="Aceptar">
                <font>
                   <Font size="13.0" />
                </font>
             </Button>
-            <Button fx:id="btnLimpiar" layoutX="184.0" layoutY="325.0" mnemonicParsing="false" onAction="#limpiar" style="-fx-background-color: #3285a8;" text="Limpiar">
+            <Button layoutX="184.0" layoutY="325.0" mnemonicParsing="false" onAction="#limpiar" style="-fx-background-color: #3285a8;" text="Limpiar">
                <font>
                   <Font size="13.0" />
                </font>

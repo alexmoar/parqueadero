@@ -28,8 +28,10 @@ public class IngresarMotoController implements Initializable  {
 	@FXML
 	private ComboBox<String> cbEstado;
 	private ParqueaderoFachada f;
+	
+	
 	@FXML
-	public void limpiar (ActionEvent ev) {
+	public void limpiar(ActionEvent ev) {
 		
 		txtPlaca.clear();
 		txtModelo.clear();
@@ -89,7 +91,7 @@ public class IngresarMotoController implements Initializable  {
 	}
 	
 	@FXML
-	public  void guardarCarro(ActionEvent ev) throws SQLException {
+	public  void guardarMoto(ActionEvent ev) throws SQLException {
 		
 	
 		String placa = txtPlaca.getText();
@@ -120,5 +122,8 @@ public class IngresarMotoController implements Initializable  {
 			
 	
 	}
+	
+	
+
 	
 }

@@ -27,6 +27,11 @@ public void imprimir() {
 	for (int i = 0; i < vehiculos.size(); i++) {
 			VehiculoDTO v= vehiculos.get(i);
 			System.out.println(v.getPlaca());
+			System.out.println(v.getMarca());
+			System.out.println(v.getModelo());
+			System.out.println(v.getCilindraje());
+			System.out.println(v.getEstado());
+			
 	}
 }
 	public String getPlaca() {
@@ -59,5 +64,17 @@ public void imprimir() {
 	public void setEstado(int estado) {
 		this.estado = estado;
 	}
+
+
+	public static ArrayList<VehiculoDTO> getVehiculos() {
+		return vehiculos;
+	}
+
+
+	public static void setVehiculos(ArrayList<VehiculoDTO> vehiculos) {
+		VehiculoDTO.vehiculos = vehiculos;
+	}
+	
+	
 	
 }

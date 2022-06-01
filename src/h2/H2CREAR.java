@@ -25,6 +25,11 @@ public class H2CREAR {
 		
 	}
 
+	public void obtenervehiculos() {
+		
+		
+	}
+	
 	public void createTableCarro() throws SQLException {
 
 		StringBuffer sbCreateTableSQL = new StringBuffer();
@@ -150,6 +155,9 @@ public class H2CREAR {
 		}
 		return exito;
 	}
+	
+	
+	
 	
 	public void updateCarro(CarroDTO carro) throws SQLException {
 
