@@ -37,7 +37,7 @@ public class CarroDAO {
 			
 					statementOb = conexion.createStatement();
 				
-	            ResultSet rs = statementOb.executeQuery("SELECT * FROM CARRO");
+	            ResultSet rs = statementOb.executeQuery("SELECT * FROM CARROS");
 
 	           
 					while (rs.next()) {
@@ -90,6 +90,8 @@ public class CarroDAO {
 		 // System.out.println("001");
 		  
 		  h2.insertCarro(carro);
+		  String s= "carro";
+		  p.notificacion(s);
 		 // System.out.println("ok");
 		  
 		  CarroDTO m = (CarroDTO) p.crearVehiculo("carro");
@@ -119,7 +121,7 @@ public class CarroDAO {
 	            String todo = "";
 
 	            Statement statementOb = conexion.createStatement();
-	            ResultSet rs = statementOb.executeQuery("SELECT C.PLACA, MA.MODELO, C.MARCA, C.CILINDRAJE,C.PUERTAS FROM CARRO C");
+	            ResultSet rs = statementOb.executeQuery("SELECT C.PLACA, MA.MODELO, C.MARCA, C.CILINDRAJE,C.PUERTAS FROM CARROS C");
 
 	            while (rs.next()) {
 	                placa = rs.getString("PLACA");

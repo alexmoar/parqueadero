@@ -131,14 +131,15 @@ public class IngresarCarroController implements Initializable ,IController {
 			}else if (estado=="Inactivo") {
 				estadoInt=0;
 			}
-		//System.out.println("estado "+estadoInt);
+		
 
 			
 				f.agregarCarro(placa, modelo, marca, cilindraje, puertas, estadoInt);
 				
 				
-				ReporteCarroController control =( ReporteCarroController)  pool.obtenerInstanciaControlador("RC");
-				control.aumentarContadorCarros();	
+				
+			//	ReporteCarroController control =( ReporteCarroController)  pool.obtenerInstanciaControlador("RC");
+		//		control.aumentarContadorCarros();	
 		
 		}
 	@FXML

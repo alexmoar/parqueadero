@@ -44,11 +44,7 @@ public class MotoDAO {
 				    String cilindraje = rs.getString("CILINDRAJE");
 				    String tipo = rs.getString("TIPO");
 				    int estado= rs.getInt("ESTADO");
-    //     String Fingreso = rs.getString("CFECHA");
-    //      String Hingreso = rs.getString("CHORAI");
-    //       String Fsalida = rs.getString("CFECHA_S");
-    //      String Hsalida = rs.getString("CHORA_S");
-    //       double saldo = rs.getDouble("CSALDO");
+
 				    
 				    MotoDTO m = (MotoDTO) p.crearVehiculo("moto");
 				    VehiculoDTO v = new VehiculoDTO();
@@ -58,11 +54,7 @@ public class MotoDAO {
 				    m.setModelo(modelo);
 				    m.setCilindraje(cilindraje);
 				    m.setTipo(tipo);
-				 //    m.setFechaI(Fingreso);
-				 //   m.setHoraI(Hingreso);
-				 //   m.setFechaS(Fsalida);
-				 //    m.setHoraS(Hsalida);
-				 //   m.setSaldo(saldo);
+				
 				    v.vehiculos.add(m);
 				   
 				}

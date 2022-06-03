@@ -1,13 +1,18 @@
 package Obsevador;
 
+import poo2.parqueadero.controllers.IController;
+
 public interface Notificador {
 
 	void listeners();
 
-	void subscribe();
 
 	void eliminarsuscritor();
 
-	void notificacion();
+	
+
+	void notificacion(String tipo);
+
+	void subscribe(IController valor);
 
 }

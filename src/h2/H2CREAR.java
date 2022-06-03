@@ -1,8 +1,11 @@
 package h2;
 
+
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import poo2.parqueadero.model.ParqueaderoFachada;
 import poo2.parqueadero.model.dto.CarroDTO;
 import poo2.parqueadero.model.dto.MotoDTO;
 
@@ -10,6 +13,7 @@ import poo2.parqueadero.model.dto.MotoDTO;
 
 public class H2CREAR {
 
+	private ParqueaderoFachada fa;
 	public static void main(String[] argv) throws SQLException {
 		
 		H2CREAR h2Example = new H2CREAR();
@@ -33,7 +37,7 @@ public class H2CREAR {
 	public void createTableCarro() throws SQLException {
 
 		StringBuffer sbCreateTableSQL = new StringBuffer();
-		sbCreateTableSQL.append("create table carro (placa varchar(20) primary key, ");
+		sbCreateTableSQL.append("create table carros (placa varchar(20) primary key, ");
 		sbCreateTableSQL.append("modelo varchar(20), marca varchar(20), ");
 		sbCreateTableSQL.append("cilindraje varchar(20), nPuertas int,");
 		sbCreateTableSQL.append("estado int");
@@ -50,7 +54,7 @@ public class H2CREAR {
 			connection.close();
 		} catch (SQLException e) {
 			// print SQL exception information
-			System.err.println("Ya está creada la tabla carro");
+			System.err.println("Ya está creada la tabla carros");
 		} finally {
 //			insertRecord();
 		}
@@ -98,7 +102,9 @@ public class H2CREAR {
 			sb.append("VALUES ('"+carro.getPlaca()+"', '"+carro.getModelo()+"', '"+carro.getMarca()+"', '"+carro.getCilindraje()+"', '"+carro.getNpuertas()+"', '"+carro.getEstado()+"')");
 
 			statementOb.executeUpdate(sb.toString());
+			
 			exito = true; 
+			
 			
 			  
 
